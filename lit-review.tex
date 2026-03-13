@@ -1,1 +1,185 @@
-git a
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+
+\section{Analyzing Dispersion Characteristics of Fine Particulate Matter
+in High-Density Urban Areas: A Study Using CFD Simulation
+and Machine Learning}
+Author: Daeun Lee, Caryl Anne M. Barquilla and Jeongwoo Lee (2025)\\
+
+Draft version:\\
+
+Terminology: \\
+- PM2.5: Particulate Matter with a diameter of 2.5 micrometers (10$^{-6}$) or less. \\
+- AR (Aspect Ratio): The ratio of the length to the width of an object (in this case, buildings). Note: in this case AR=distance between buildings/height of buildings\\
+\\
+Used Methods: \\
+- XGBoost, Random Forest\\
+- CFD: ENVI-met, OpenFOAM, and ANSYS Fluent(2023 R2) Note: Computational domain was constructed by AIJ guidelines \\
+Results: \\
+- 91-95\% accuracy in predicting PM2.5 concentrations using XGBoost. \\
+Some notes:\\
+Threshold effect of AR, where values exceeding 2.5 improve PM2.5 dispersion under high wind velocity. \\
+In loop-road networks, centrally elevated buildings enhance ventilation, while in grid-road networks, taller perimeter buildings shield inner blocks from arterial emissions\\
+Tested 3 Road Layout Configurations: 1 Grid road, 2 Loop road, 3 T-junction road\\
+3 Block height configurations: 1 Enclosed height configuration, 2 Even height configuration, 3 Elevated core configuration\\
+4 AR configurations: 1 AR=1, 2 AR=1.5, 3 AR=3, 4 AR=4.5\\
+And also took into account the distance from arterial roads, side space between buildings, wind speed, atmospheric pressure\\
+
+\textbf{Final version:}
+This article authors investigated the dispersion of fine particulate matter
+(PM2.5) in high-density urban environments using a combination of
+computational fluid dynamics (CFD) simulations and machine learning models.
+In this study, PM2.5 refers to particulate matter with a diameter of
+2.5micrometers or less. The authors analyzed how urban morphology and
+environmental conditions influence pollutant dispersion.
+
+To model airflow and pollutant transport, several CFD platforms were used,
+including ENVI-met, OpenFOAM, and ANSYS Fluent (2023 R2). The computational
+domain was constructed according to the AIJ guidelines for pedestrian wind
+environment simulations. In addition, machine learning models such as
+XGBoost and Random Forest were applied to predict PM2.5 concentration levels
+based on the simulation data.
+
+The experimental setup considered multiple urban configurations, including
+three road layout scenarios (grid, loop, and T-junction roads),
+three building height configurations (enclosed height, even height, and
+elevated core), and four aspect ratio (AR) scenarios ranging from AR=1 to
+AR=4.5. In this study, the aspect ratio was defined as the distance between
+buildings divided by the building height. Other environmental variables,
+such as distance from arterial roads, side space between buildings, wind
+speed, and atmospheric pressure, were also included in the analysis.
+
+The results showed that the XGBoost model achieved high predictive
+performance, reaching an accuracy of approximately 91-95\% in estimating
+PM2.5 concentrations. Furthermore, the study identified a threshold effect
+for the aspect ratio, where AR values greater than 2.5 significantly improve
+urban ventilation. The findings also indicate that centrally elevated
+buildings enhance ventilation in loop-road networks, while taller perimeter
+buildings in grid-road layouts can help shield inner urban blocks from
+arterial emissions.
+
+\section{Air Pollution Dispersion Modelling in Urban Environment
+Using CFD: A Systematic Review}
+
+Author: Mariya Pantusheva, Radostin Mitkov, Petar O. Hristov and Dessislava Petrova-Antonova \\
+
+Draft version:\\
+
+Terminology: \\
+- V\&V: Verification and Validation, methods used to check whether a model works correctly and whether its results can be trusted. \\
+- RANS: Reynolds-Averaged Navier--Stokes equations, a simplified approach for simulating airflow where the average behavior of the flow is calculated. \\
+- LES: Large Eddy Simulation, a more detailed method that simulates turbulence more accurately but requires much more computational power. \\
+\\
+
+Used Methods: \\
+- A systematic literature review of about 90 scientific articles related to air pollution dispersion modelling in urban areas using CFD. \\
+- The reviewed studies were analyzed using more than 190 modelling characteristics grouped into seven categories: general information, geometry, mesh, physics models, boundary conditions, solution setup, and verification/validation. \\
+- The analysed papers were also compared with commonly used best-practice guidelines such as COST 732, AIJ guidelines \\
+\\
+
+Results: \\
+- Review showed that the most frequently used CFD software in urban air pollution studies are ANSYS Fluent and OpenFOAM. \\
+- Most studies used three-dimensional models, and the majority of simulations were performed using steady-state RANS models rather than LES models. \\
+- For modelling pollutant transport, the passive scalar equation and the species transport model were the most commonly applied approaches. \\
+\\
+
+Some notes:\\
+The authors found that around 12--34\% of the analysed papers did not report some important modelling details that are necessary to reproduce the study. \\
+In addition, none of the reviewed studies performed verification and validation strictly according to the recommended standards. \\
+Many papers focused mainly on methodological research rather than solving real applied urban air pollution problems. \\
+Most of the studies analysed gaseous pollutants related to traffic emissions, while particulate matter and other pollution sources were investigated less frequently. \\
+The review also highlights that modelling choices such as computational domain size, mesh resolution, turbulence model, and boundary conditions have a strong influence on the reliability of CFD simulation results. \\
+
+\section{Application of CFD Modelling for Pollutant Dispersion at an
+Urban Traffic Hotspot}
+
+Author: Giannis Ioannidis, Chaofan Li, Paul Tremper, Till Riedel and Leonidas Ntziachristos \\
+
+Draft version:\\
+
+Terminology: \\
+- ABL: Atmospheric Boundary Layer, the lowest part of the atmosphere that is directly affected by the ground surface. \\
+\\
+
+Used Methods: \\
+- CFD modelling with OpenFOAM for simulating pollutant dispersion in a real urban traffic hotspot in Augsburg, Germany. \\
+- Traffic emissions for NOx, CO, and PM were estimated using COPERT Street software based on traffic data from September 2018. \\
+- Meteorological input data such as wind speed and wind direction were taken from the smartAQnet sensor network. \\
+- The model used steady-state RANS, the standard k-$\varepsilon$ turbulence model, and the passive scalar transport equation for pollutant dispersion. \\
+- A sensitivity analysis was carried out to select the most suitable computational mesh. \\
+\\
+
+Results: \\
+- Developed CFD model produced high-resolution concentration maps for NOx, CO, and PM at street scale. \\
+- Predicted values were in the same general range as observations and followed the daily traffic related pollution trends. \\
+- Average daily deviation between modelled and measured values was about 11\% for NOx, 26\% for CO, and 27\% for PM. \\
+- Reported regression coefficients were $r^2 = 0.82$ for NOx, $r^2 = 0.54$ for CO, and $r^2 = 0.91$ for PM. \\
+\\
+
+Some notes:\\
+Study area was a highly trafficked part of Augsburg, Germany, with 3D urban model taken from OpenStreetMap. \\
+Computational domain height was set above 6H and the upstream distance above 5H, following common CFD recommendations. \\
+Model used seven road emission sources placed along the main traffic artery. \\
+Medium computational mesh with 9 million cells was selected because it gave similar results to the fine mesh but required much less computational time. \\
+Results showed that pollutant concentrations can vary strongly even within a small street area. In the analysed 20 $\times$ 60 m area, local deviations reached about +50\% and -18\% compared to the sensor location. \\
+Study also showed that higher pollutant concentrations were associated with lower wind velocity, lower turbulent kinetic energy, and lower pressure areas inside the street canyon. \\
+
+
+
+\section{Hazardous Atmospheric Dispersion in Urban Areas: a
+Deep Learning Approach for Emergency Pollution
+Forecast}
+
+Author: Mouhcine Mendil, Sylvain Leirens, Patrick Armand, Christophe Duchenne
+
+Draft version:\\
+
+Terminology: \\
+
+Used Methods: \\
+- After training neural network can predict the dispersion of hazardous pollutants without running new CFD simulations. \\
+\\
+
+Results: \\
+- Deep learning model was able to reproduce pollutant dispersion patterns generated by CFD simulations. \\
+- The model significantly reduced computation time compared to traditional CFD simulations. \\
+- Predictions of pollutant concentration fields were close to CFD results in most tested scenarios. \\
+\\
+
+Some notes:\\
+Prooposed deep learning model acts as a surrogate model that approximates CFD results much faster. \\
+Such models can help quickly estimate affected areas after accidental releases of hazardous substances. \\
+
+
+\section{Hybrid Physics-Machine Learning Framework for Forecasting
+Urban Air Circulation and Pollution in Mountain-Valley Cities}
+
+Author: Lyazat Naizabayeva, Gulbakyt Sembina and Gulnara Tleuberdiyeva
+Draft version:\\
+
+Terminology: \\
+- RMSE: Root Mean Square Error
+- Urban boundary layer is lowest part of the atmosphere above the city where buildings, terrain and weather influence airflow. \\
+- Boussinesq approximation: simplification of Navier-Stokes equations used in atmospheric flow simulations. \\
+\\
+
+Used Methods: \\
+- Hybrid modelling approach combining Navier  stokes equations with machine learning methods. \\
+- Machine learning module based on gradient boosting and decision tree methods for improving prediction accuracy. \\
+- Model trained using meteorological observations and air quality data from 2024. \\
+- The framework predicts wind speed, temperature and particulate matter concentrations for short-term forecasts (around 6-24 hours). \\
+\\
+
+Results: \\
+- Hybrid model improved prediction accuracy compared to purely statistical models. \\
+- Forecast accuracy increased by about 16\% in terms of $R^2$, and RMSE decreased by about 25\%. \\
+- For 6 hour forecasts the model achieved RMSE $\approx$ 1.2 m/s for wind speed, 1.8°C for temperature, and 0.012 mg/m$^3$ for particulate matter. \\
+\\
+
+Some notes:\\
+Increase of wind speed by 1 m/s reduced particulate matter concentration by about 10-15\% during winter nights. \\
+Hybrid approach combines physical consistency of atmospheric equations with flexibility of machine learning models. \\
+\end{document}
